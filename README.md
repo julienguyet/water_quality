@@ -101,8 +101,8 @@ To solve our problem we need more robust and complex tools. As we know, the Four
 We built our algorithm leveraging Numpy and its integrated Fourier functions. Code is available in the [Fourier notebook](https://github.com/julienguyet/water_quality/blob/main/notebooks/fourier_transform.ipynb). In short, the following steps are:
 1. Compute the Fourier Transform
 2. Order values and keep only top k samples and cast rest as 0
-3. Compute restructured signal X̂
-4. Check the deviation between X and X̂ and compare it to a threshold to detect anomalies
+3. Compute restructured signal X'
+4. Check the deviation between X and X' and compare it to a threshold to detect anomalies
 
 Below is the results when keeping the top 10 samples of our "signal":
 
@@ -117,4 +117,18 @@ A choice must be made between the number of samples k and the alpha value to bal
 <img width="333" alt="Screenshot 2024-08-24 at 13 50 49" src="https://github.com/user-attachments/assets/b07f4a66-9e9f-4ac4-86e5-e43f3b390e7f">
 
 
-To date we haven’t find any optimal solution. Some ideas to explore would be: (i) change threshold function (median, quantiles, …) or (ii) create a sliding window Fourier function.
+To date we haven’t find any optimal solution with the Fourier Transform. Some ideas to explore: (i) change threshold function (median, quantiles, …) or (ii) create a sliding window Fourier function.
+
+### Long-Short Term Memory (LSTM)
+
+Despite promising results, the Fourier Transform cannot be used as final answer to our problem. Indeed, we are talking about public health issues here, and we must find a solution leaving no doubt to the question: "can I safely drink this water?".
+
+As for the Fourier function, we decided to apply a concept first designed for other kind of problems. In NLP, it is (or was?) common to use Recurrent Neural Network and more especially LSTM as these ML models are very good at understanding sequences. 
+
+To apply LSTM to our use case, we first created sequences of length 10 with associated label for each datapoint included in the sequence. Then, we trained the model to learn the pattern of each sequence and predict the label of the next point in the given sequence. 
+
+<img width="492" alt="Screenshot 2024-08-24 at 14 02 53" src="https://github.com/user-attachments/assets/38c62e5b-78c0-4b66-a96c-4eead27d8f7d">
+
+After training, we obtained a Precision score of 0.75 and a Recall of 0.47. Here is the associated confusion matrix:
+
+<img width="705" alt="Screenshot 2024-08-24 at 14 03 21" src="https://github.com/user-attachments/assets/8ef66759-ccf2-46dc-ab80-dbcefbe0444c">
