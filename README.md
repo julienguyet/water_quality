@@ -1,5 +1,7 @@
 # TSA on GECCO Industrial Challenge Dataset
 
+---
+
 ## Dataset Description
 
 The GECCO 2018 Industrial Challenge, presented by the Genetic and Evolutionary Computation Conference, centered around a critical and increasingly relevant issue—monitoring drinking-water quality. This dataset was provided as part of a competition aimed at fostering innovative approaches in evolutionary computation and machine learning to detect anomalies in water quality, which are indicative of potential health hazards or system failures.
@@ -19,18 +21,26 @@ The challenge dataset comprises multivariate time series data collected from a r
 
 <img width="685" alt="Screenshot 2024-06-07 at 16 52 46" src="https://github.com/user-attachments/assets/00266ffe-6964-466c-8753-27cc5c8e037f">
 
+---
+
 ## Applications and Importance
 
 The dataset not only serves as a valuable resource for developing and benchmarking anomaly detection algorithms but also plays a vital role in enhancing the safety and efficiency of water treatment facilities. By accurately identifying anomalies, predictive models can help prevent serious issues such as contamination events or system malfunctions before they affect water quality and public health.
+
+---
 
 ## Link to the dataset
 
 - [GECCO Challenge 2018](https://www.spotseven.de/gecco/gecco-challenge/gecco-challenge-2018/)
 - [Resource Package (contains the dataset)](https://www.spotseven.de/wp-content/uploads/2018/03/ResourcePackage2018.zip)
 
+---
+
 ## Authors
 
 Group: Duy Tan LE and Julien Guyet
+
+---
 
 ## EDA Summary
 
@@ -53,4 +63,6 @@ Appart from that, anomalies are quite evenly distributed.
 
 <img width="864" alt="Screenshot 2024-08-24 at 12 40 50" src="https://github.com/user-attachments/assets/e47a8251-bcb1-4cee-a550-0a57faaf83f5">
 
+---
 
+## 
