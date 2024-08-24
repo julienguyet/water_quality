@@ -1,12 +1,12 @@
 # TSA on GECCO Industrial Challenge Dataset
 
----
 
 ## Dataset Description
 
 The GECCO 2018 Industrial Challenge, presented by the Genetic and Evolutionary Computation Conference, centered around a critical and increasingly relevant issue—monitoring drinking-water quality. This dataset was provided as part of a competition aimed at fostering innovative approaches in evolutionary computation and machine learning to detect anomalies in water quality, which are indicative of potential health hazards or system failures.
 
 ### Dataset Overview
+
 The challenge dataset comprises multivariate time series data collected from a real-world water management system. The data includes several physicochemical parameters measured over time, reflecting the complexity and dynamics of water quality management. Key features include:
 
 - `Time`: Timestamps for each measurement, providing the temporal context for the data.
@@ -65,4 +65,23 @@ Appart from that, anomalies are quite evenly distributed.
 
 ---
 
-## 
+## Anomaly Detection
+
+Now that we explored the data, we can move to the modeling part. Our goal is to build a model capable of perfectly detecting anomalies to ensure tap water is safe to drink for citizens. In this section, we will explore algorithms of increasing complexity.
+
+### Heuristic Approach
+
+First, let's define a baseline by applying basic statistical concepts and see if it can solve our problem. After all, why building complex ML model if mean and [z-score](https://en.wikipedia.org/wiki/Standard_score) can help us here?
+
+The idea is pretty simple: we create a sliding window selecting N data points. Then we compute in this window: 
+- the mean
+- the standard deviation
+- the deviation to the mean for each points
+
+If the deviation is greater than a define threshold, the value is labelled as an anomaly. Below are some graphs with formulas to help us visualize what we are doing:
+
+<img width="645" alt="Screenshot 2024-08-24 at 13 12 03" src="https://github.com/user-attachments/assets/0b4723e3-f6dd-4922-abcb-325548879f06">
+
+<img width="642" alt="Screenshot 2024-08-24 at 13 12 20" src="https://github.com/user-attachments/assets/b93a88b1-d988-419c-9e43-534fa5128af7">
+
+
