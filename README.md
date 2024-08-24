@@ -17,6 +17,8 @@ The challenge dataset comprises multivariate time series data collected from a r
 - `Fm` and `Fm_2` (Flow rates): Recorded at two different water lines, these indicate the volume of water flow, essential for detecting leaks or changes in water demand.
 - `EVENT`: A boolean label identifying whether a measurement is considered an anomaly, crucial for training models to recognize signs of potential issues.
 
+<img width="685" alt="Screenshot 2024-06-07 at 16 52 46" src="https://github.com/user-attachments/assets/00266ffe-6964-466c-8753-27cc5c8e037f">
+
 ## Applications and Importance
 
 The dataset not only serves as a valuable resource for developing and benchmarking anomaly detection algorithms but also plays a vital role in enhancing the safety and efficiency of water treatment facilities. By accurately identifying anomalies, predictive models can help prevent serious issues such as contamination events or system malfunctions before they affect water quality and public health.
@@ -34,13 +36,13 @@ Group: Duy Tan LE and Julien Guyet
 
 It is important to note that per the GECCO Organization, the **<font color=#ff7400>flow rate and the temperature</font>** of the water is considered as operational data: **<font color=#ff7400>changes</font>** in these values may indicate variations in the related quality values but **<font color=#ff7400>are not considered as events themselves</font>**.
 
-Missing values count for 0.7% only of the data. As we can see on picture below, after investigation we notice values for every columns are always missing for the same rows, so we will probably drop them when building the model.
+Missing values count for 0.7% only of the data. As we can see on picture below, after investigation we notice values for every columns are always missing for the same rows, so we will simply drop them.
 
-<img width="685" alt="Screenshot 2024-06-07 at 16 52 46" src="https://github.com/tanle8/tsa-gecco-challenge/assets/55974674/bad1f7d2-f9a8-495f-8203-6589d2ec0331">
+<img width="673" alt="Screenshot 2024-08-24 at 12 39 52" src="https://github.com/user-attachments/assets/6d54d9f3-43b0-48af-822f-8b0285ff031d">
 
 To understand better our anomalies, we did a plot per feature. If some data points look like obvious outliers, others are mixed in the crowd and it might be harder to properly detect them. The plot below for the pH value of the water over time is  a good example of this:
 
-<img width="1165" alt="Screenshot 2024-06-07 at 16 52 23" src="https://github.com/tanle8/tsa-gecco-challenge/assets/55974674/d9263804-9e8e-4cf2-b99c-ebed29c81b7c">
+<img width="1156" alt="Screenshot 2024-08-24 at 12 40 33" src="https://github.com/user-attachments/assets/be7edb70-7655-4073-9fef-4ec7ef8bfef5">
 
 Finally, we looked at an hourly level and it seems anomalies are:
 - not appearing at 2am and midnight
@@ -49,6 +51,6 @@ Finally, we looked at an hourly level and it seems anomalies are:
 
 Appart from that, anomalies are quite evenly distributed.
 
-<img width="879" alt="Screenshot 2024-06-07 at 16 52 33" src="https://github.com/tanle8/tsa-gecco-challenge/assets/55974674/06cfe3ef-1f9e-4fb8-bdf2-234d7bbd5cda">
+<img width="864" alt="Screenshot 2024-08-24 at 12 40 50" src="https://github.com/user-attachments/assets/e47a8251-bcb1-4cee-a550-0a57faaf83f5">
 
 
