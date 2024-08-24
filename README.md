@@ -93,3 +93,28 @@ Code is available in the dedicated [notebook](https://github.com/julienguyet/wat
 Obviously, we cannot be satisfied with such results. It is clear that our algorithms is failing to both detect anomalies and not confuse "normal" data points with anomalies. The below graph is self-explanatory:
 
 <img width="1004" alt="Screenshot 2024-08-24 at 13 25 19" src="https://github.com/user-attachments/assets/bfe3dd3f-5d35-4eb2-a734-c5963e76bf3a">
+
+### Fourier Transform
+
+To solve our problem we need more robust and complex tools. As we know, the Fourier Transform allows us to represent a function from the Time domain into the Frequency domain. This means the component frequencies of the original signal can then be used to analyze patterns, extract them and remove noise. If you are familiar with audio processing and how Fourier Transform can help, logic here is mainly the same. In case you are not familiar with the Fourier Transform, this [video](https://www.youtube.com/watch?v=spUNpyF58BY&t=1003s) by 3Blue1Brown is an excellent starting point. 
+
+We built our algorithm leveraging Numpy and its integrated Fourier functions. Code is available in the [Fourier notebook](https://github.com/julienguyet/water_quality/blob/main/notebooks/fourier_transform.ipynb). In short, the following steps are:
+1. Compute the Fourier Transform
+2. Order values and keep only top k samples and cast rest as 0
+3. Compute restructured signal X̂
+4. Check the deviation between X and X̂ and compare it to a threshold to detect anomalies
+
+Below is the results when keeping the top 10 samples of our "signal":
+
+<img width="997" alt="Screenshot 2024-08-24 at 13 47 28" src="https://github.com/user-attachments/assets/d6d8ff7f-ae7e-4d9d-9847-aed0b49ee2ca">
+
+Again, we designed our model with hyper-parameters such as the number of top k samples to include or the alpha value to set the threshold. 
+
+<img width="312" alt="Screenshot 2024-08-24 at 13 50 36" src="https://github.com/user-attachments/assets/c573e60e-d696-4a10-9b5e-4743992a7586">
+
+A choice must be made between the number of samples k and the alpha value to balance the amount of False Negatives:
+
+<img width="333" alt="Screenshot 2024-08-24 at 13 50 49" src="https://github.com/user-attachments/assets/b07f4a66-9e9f-4ac4-86e5-e43f3b390e7f">
+
+
+To date we haven’t find any optimal solution. Some ideas to explore would be: (i) change threshold function (median, quantiles, …) or (ii) create a sliding window Fourier function.
