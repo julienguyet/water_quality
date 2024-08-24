@@ -131,4 +131,22 @@ To apply LSTM to our use case, we first created sequences of length 10 with asso
 
 After training, we obtained a Precision score of 0.75 and a Recall of 0.47. Here is the associated confusion matrix:
 
-<img width="705" alt="Screenshot 2024-08-24 at 14 03 21" src="https://github.com/user-attachments/assets/8ef66759-ccf2-46dc-ab80-dbcefbe0444c">
+<img width="705" alt="Screenshot 2024-08-24 at 14 03 21" src="https://github.com/user-attachments/assets/f7769bda-c693-4407-bb76-030488f47617">
+
+From the matrix and below graph we can deduct our model is facing difficulties to detect anomalies, but the good news is it almost never confuse anomalies with normal data.
+
+<img width="1008" alt="Screenshot 2024-08-24 at 14 06 14" src="https://github.com/user-attachments/assets/9fd022d7-fec5-4f4f-a63b-e7e2bd2369e3">
+
+To improve the performance of our model we leveraged the imbalance-learn library and combined LSTM with SMOTE.
+
+SMOTE stands for Synthetic Minority Oversampling Technique. It works by selecting examples that are close in the feature space. Then it draws a line and “create” a new sample in this feature space. This way, it artificially creates new data points and provide you with a new dataset. Code from imbalance-learn.org (sklearn) is available [here](https://imbalanced-learn.org/stable/references/generated/imblearn.over_sampling.SMOTE.html).
+
+We used SMOTE to generate new anomalies in our dataset and therefore help the model to learn better what is an anomaly. Finally, we obtained the below results:
+
+<img width="139" alt="Screenshot 2024-08-24 at 14 19 46" src="https://github.com/user-attachments/assets/8535614f-b105-47ac-a6fc-3b6cd1f04a3f">
+
+<img width="684" alt="Screenshot 2024-08-24 at 14 19 56" src="https://github.com/user-attachments/assets/64625b38-3429-4984-ab80-bdeac7d1735d">
+
+As we can see, we are obtaining a model capable of classifying almost perfectly all data points.
+
+<img width="1012" alt="Screenshot 2024-08-24 at 14 23 23" src="https://github.com/user-attachments/assets/1ee9746c-a87b-4f94-afa4-27ca941ac64e">
