@@ -84,4 +84,12 @@ If the deviation is greater than a define threshold, the value is labelled as an
 
 <img width="642" alt="Screenshot 2024-08-24 at 13 12 20" src="https://github.com/user-attachments/assets/b93a88b1-d988-419c-9e43-534fa5128af7">
 
+As you can see on formula (3) we have included an alpha hyper-parameter when building the model. It is set to 2 by default (following empirical rule of Normal Distribution where 95% of the data will fall within +/- two standard deviations from the mean).
 
+Code is available in the dedicated [notebook](https://github.com/julienguyet/water_quality/blob/main/notebooks/heuristic.ipynb) where we applied different values for alpha and the window sizes (how many points to include when computing). Below is a table of our scores for Precision and Recall: 
+
+<img width="341" alt="Screenshot 2024-08-24 at 13 24 06" src="https://github.com/user-attachments/assets/544aa1d7-36f3-4ff0-8c42-17196a623a9b">
+
+Obviously, we cannot be satisfied with such results. It is clear that our algorithms is failing to both detect anomalies and not confuse "normal" data points with anomalies. The below graph is self-explanatory:
+
+<img width="1004" alt="Screenshot 2024-08-24 at 13 25 19" src="https://github.com/user-attachments/assets/bfe3dd3f-5d35-4eb2-a734-c5963e76bf3a">
